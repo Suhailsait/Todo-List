@@ -38,4 +38,8 @@
 .image img{
     width:40rem;
     aspect-ratio: 2/2;
+    object-fit: contain;
 }
+.error{
+    color: red;
+  }

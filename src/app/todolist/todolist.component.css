@@ -1,0 +1,53 @@
+.cards .card{
+    background-color: #d3e8eb;
+    border: none;
+    border-radius: 0;
+    padding: 2rem;
+}
+
+.card .card-body .card-avatar .material-icons{
+    padding: 1.5rem;
+    background-color: #FFF;
+    border-radius: 50%;
+    font-size: 4rem;
+}
+
+.card-title{
+    font-size: 2rem;
+}
+.num{
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.list-title{
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+.list-body{
+    overflow: auto;
+    height: 41rem;
+    background-color: #d3e8eb;
+    padding: 1rem;
+}
+.list-body::-webkit-scrollbar {
+    display: none;
+  }
+
+.list-tasks{
+    padding: 1rem;
+}
+
+.task-title{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.task-body{
+    font-size: 1.2rem;
+    font-weight: 500;
+    max-width: 100rem;
+}
+
+.status .form-select {
+    font-size: 1.3rem;
+}

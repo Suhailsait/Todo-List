@@ -6,19 +6,61 @@
     <span class="login-lay d-flex flex-column align-items-center gap-2">
       <span class="login-title">Login to your Account</span>
       <span class="login-form d-flex flex-column gap-1">
-        <form class="form d-flex flex-column align-items-center gap-3">
+        <form
+          class="form d-flex flex-column align-items-center gap-3"
+          [formGroup]="loginForm"
+          (ngSubmit)="login()"
+        >
           <input
-            type="email"
+            type="text"
             class="form-control"
-            placeholder="Email address"
+            name="email"
+            formControlName="email"
+            placeholder="Email"
+            required
           />
-          <input type="password" class="form-control" placeholder="Password" />
+          <div
+            *ngIf="
+              loginForm.get('email')?.hasError('required') &&
+              loginForm.get('email')?.touched
+            "
+            class="error"
+          >
+            Email is required
+          </div>
+          <div
+            *ngIf="
+              loginForm.get('email')?.hasError('email') &&
+              loginForm.get('email')?.hasError
+            "
+            class="error"
+          >
+            Invalid email address
+          </div>
 
-          <button class="btn btn-primary">Submit</button>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            formControlName="password"
+            placeholder="Password"
+            required
+          />
+          <div
+          *ngIf="
+            loginForm.get('password')?.hasError('required') &&
+            loginForm.get('password')?.touched
+          "
+          class="error"
+        >
+          Password is required
+        </div>
+
+          <button type="button" class="btn btn-primary">Submit</button>
         </form>
         <span class="new-acc d-flex justify-content-center gap-3">
           <span>Don't have an account</span>
-          <a href="">Register</a>
+          <a href="register">Register</a>
         </span>
       </span>
     </span>

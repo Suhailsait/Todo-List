@@ -38,3 +38,7 @@
   width: 40rem;
   aspect-ratio: 2/2;
 }
+
+.error{
+  color: red;
+}

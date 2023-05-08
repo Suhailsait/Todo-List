@@ -3,37 +3,104 @@
     <span class="register-lay d-flex flex-column align-items-center gap-2">
       <span class="register-title"> Create an account </span>
       <span class="register-form d-flex flex-column gap-1">
-        <form class="form d-flex flex-column align-items-center">
+        <form
+          class="form d-flex flex-column align-items-center"
+          [formGroup]="signupForm"
+          (ngSubmit)="signup()"
+        >
           <input
             type="text"
             class="form-control"
             placeholder="Username"
+            formControlName="username"
+            required
           />
+          <div
+            *ngIf="
+              signupForm.get('username')?.hasError('required') &&
+              signupForm.get('username')?.touched
+            "
+            class="error"
+          >
+            Username is required
+          </div>
           <input
-            type="email"
+            type="text"
             class="form-control"
-            placeholder="Email address"
+            name="email"
+            formControlName="email"
+            placeholder="Email"
+            required
           />
+          <div
+            *ngIf="
+              signupForm.get('email')?.hasError('required') &&
+              signupForm.get('email')?.touched
+            "
+            class="error"
+          >
+            Email is required
+          </div>
+          <div
+            *ngIf="
+              signupForm.get('email')?.hasError('email') &&
+              signupForm.get('email')?.hasError
+            "
+            class="error"
+          >
+            Invalid email address
+          </div>
           <input
             type="password"
             class="form-control"
+            name="password"
+            formControlName="password"
             placeholder="Password"
+            required
           />
+          <div
+            *ngIf="
+              signupForm.get('password')?.hasError('required') &&
+              signupForm.get('password')?.touched
+            "
+            class="error"
+          >
+            Password is required
+          </div>
           <input
             type="password"
             class="form-control"
-            placeholder="Confirm password"
+            name="confirmpassword"
+            formControlName="confirmpassword"
+            placeholder="Confirm Password"
+            required
           />
-          <button class="btn btn-primary">Submit</button>
+          <div
+            *ngIf="
+              signupForm.get('confirmpassword')?.hasError('required') &&
+              signupForm.get('confirmpassword')?.touched
+            "
+            class="error"
+          >
+            Confirm Password is required
+          </div>
+
+          <div
+            *ngIf="signupForm.get('confirmpassword')?.hasError('mismatch')"
+            class="error"
+          >
+            Passwords do not match
+          </div>
+          <button class="btn btn-primary" type="submit">Submit</button>
         </form>
         <span class="already d-flex justify-content-center gap-1">
-            <span>Already have account</span>
-            <a href="">Login</a>
+          <span>Already have account</span>
+          <a href="">Login</a>
         </span>
       </span>
     </span>
-    <span class="image"> 
-        <img class="img-fluid" src="../../assets/Images/Checklist.jpg" alt="">
+    <span class="image">
+      <img class="img-fluid" src="../../assets/Images/Checklist.jpg" alt="" />
     </span>
   </aside>
 </section>

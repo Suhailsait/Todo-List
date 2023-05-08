@@ -1,0 +1,21 @@
+.form{
+    width: 100%;
+    height: 100%;
+}
+form{
+    width: 40rem;
+    background-color: #d3e8eb7f;
+    padding: 2rem;
+}
+.form-label{
+    font-size: 1.4rem;
+}
+
+textarea{
+    height: 10rem;
+}
+button{
+    width: 15rem;
+    height: 3rem;
+    font-size: 1.4rem;
+}

@@ -1,0 +1,15 @@
+<section class="form d-flex justify-content-center align-items-center">
+  <form (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="task-title" class="form-label">Task Title</label>
+      <input type="email" class="form-control" id="task-title" [(ngModel)]="taskname"/>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" 
+        >Enter your Task</label
+      >
+      <textarea class="form-control" id="exampleInputPassword1" [(ngModel)]="task"> </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</section>

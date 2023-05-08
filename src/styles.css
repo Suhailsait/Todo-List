@@ -4,11 +4,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
+    text-decoration: none !important;
 }
 
 html,body{
     font-family: 'Montserrat', sans-serif;
-    background-color: #F0F8FF;
+    background-color: #d3e8eb;
     font-size: 10px;
+}
+ol,ul{
+    padding-left: 0;
 }
 
