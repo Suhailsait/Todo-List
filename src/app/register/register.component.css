@@ -1,0 +1,41 @@
+.register-sec{
+    height: 100vh;
+}
+
+.container{
+    width: 90%;
+    max-width: 80rem;
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    border-radius: 2rem;
+}
+.register-title{
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+
+}
+.register-form{
+    max-width: 50rem;
+}
+.register-form .form{
+    gap: 2rem;
+    width: 20rem;
+}
+.form input{
+    width: 100%;
+    padding: 1rem;
+    height: 3.5rem;
+    font-size: 1.1rem;
+}
+.already{
+    font-size: 1.3rem;
+}
+
+.image{
+    padding: 0 0 0 2rem;
+}
+.image img{
+    width:40rem;
+    aspect-ratio: 2/2;
+}

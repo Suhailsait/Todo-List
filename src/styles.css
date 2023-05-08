@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F0F8FF;
+    font-size: 10px;
+}
+
