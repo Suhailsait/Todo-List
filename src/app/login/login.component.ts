@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  users:any
+  users: any
 
   loginForm = this.fb.group({
     email: [
@@ -22,29 +22,29 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]],
   });
 
-  constructor(private fb: FormBuilder,private router : Router) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
+    this.users = JSON.parse(localStorage.getItem('userList') || '');
   }
 
-  login(){
-    this.users = JSON.parse(localStorage.getItem('userList') || '');
+  login() {
     const { email, password } = this.loginForm.value;
     if (this.loginForm.valid) {
-      const foundValue = this.users.filter((element:any) => element.email === email);
-      console.log(foundValue);
-      if(foundValue[0].email === email){
-        if (foundValue[0].password ===password) {
-          this.router.navigateByUrl("dashboard")
+      const foundValue = this.users.filter((element: any) => element.email === email);
+      if (foundValue.length != 0) {
+        if (foundValue[0].password == password) {
           localStorage.setItem('loginUser', JSON.stringify(foundValue));
+          this.router.navigateByUrl("dashboard")
         } else {
           alert("Invalid Password")
         }
-        
+      } else {
+        alert("No user Found")
+      }
     } else {
-      alert("Invalid Email")
+      alert("Invalid form")
     }
   }
-}
 
 }

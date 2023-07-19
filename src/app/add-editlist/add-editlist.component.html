@@ -1,14 +1,14 @@
 <section class="form d-flex justify-content-center align-items-center">
-  <form (ngSubmit)="submit()">
+  <form (ngSubmit)="submit()" [formGroup]="Todoform">
     <div class="mb-3">
       <label for="task-title" class="form-label">Task Title</label>
-      <input type="email" class="form-control" id="task-title" [(ngModel)]="taskname"/>
+      <input type="email" class="form-control" id="task-title" formControlName="taskname"/>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label" 
         >Enter your Task</label
       >
-      <textarea class="form-control" id="exampleInputPassword1" [(ngModel)]="task"> </textarea>
+      <textarea class="form-control" id="exampleInputPassword1" formControlName="task"> </textarea>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

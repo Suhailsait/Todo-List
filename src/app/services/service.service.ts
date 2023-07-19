@@ -9,13 +9,11 @@ export class ServiceService {
   constructor() {}
 
   addUser(data: any): void {
-    this.users.push(data)
-    localStorage.setItem('userList', JSON.stringify(this.users));
+    localStorage.setItem('userList', JSON.stringify(data));
   }
 
   deleteUser(index: number): void {
     this.users.splice(index, 1);
-
     localStorage.setItem('userList', JSON.stringify(this.users));
   }
 

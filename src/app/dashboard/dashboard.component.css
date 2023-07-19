@@ -35,6 +35,10 @@
     margin-top: 8rem;
 }
 
+.list-item{
+    cursor: pointer;
+}
+
 .nav li a{
     font-size: 1.3rem;
     color: #FFF;
@@ -42,10 +46,7 @@
     height: 3.5rem;
     padding-left: 2rem;
 }
-.nav .active{
-    background-color: blue;
-    border-radius: 0.5rem;
-}
+
 .nav li .btn{
     font-size: 1.3rem;
     outline: none;
@@ -60,3 +61,7 @@
     height: 88vh;
 }
 
+.list-item.active{
+    background-color: rgb(134, 134, 175);
+    border-radius: 0.5rem;
+}

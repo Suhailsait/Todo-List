@@ -7,7 +7,7 @@
       </span>
     </a>
     <span class="profile d-flex align-items-center gap-4">
-      <span class="name">{{userDetails[0].username}}</span>
+      <span class="name">{{loginUser[0].username}}</span>
       <span class="profile-img">
         <img src="../../assets/Images/user.jpg" alt="" />
       </span>
@@ -17,63 +17,45 @@
 
 <div class="side-nav d-flex flex-column flex-shrink-0 p-3 text-white">
   <ul class="nav flex-column gap-3 mb-auto">
-    <li routerLinkActive="active">
-      <a [routerLink]="['todolist']" class="d-flex align-items-center gap-2">
+    <li (click)="listview()" class="list-item" [ngClass]="{'active' : listView === true}">
+      <a class="d-flex align-items-center gap-2">
         <span class="material-icons-outlined"> dashboard </span>
         Dashboard
       </a>
     </li>
-    <li routerLinkActive="active">
-      <a
-        [routerLink]="['formlist']"
-        class="text-white d-flex align-items-center gap-2"
-      >
+    <li (click)="editview()" class="list-item" [ngClass]="{'active' : addList === true}">
+      <a class="text-white d-flex align-items-center gap-2">
         <span class="material-icons-outlined"> add_circle_outline </span>
         Add New List
       </a>
     </li>
     <li>
-      <button
-        type="button"
-        class="btn text-white d-flex align-items-center gap-2"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
+      <button type="button" class="btn text-white d-flex align-items-center gap-2" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
         <span class="material-icons-outlined"> logout </span>
         Logout
       </button>
     </li>
   </ul>
 </div>
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">...</div>
+      <div class="modal-body">Are you sure want to Log Out</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="logout()" data-bs-dismiss="modal">Log Out</button>
       </div>
     </div>
   </div>
 </div>
 
 <aside class="main-body p-3 bg-white">
-  <router-outlet></router-outlet>
+  <app-todolist *ngIf="listView" [loginuser]="loginUser"></app-todolist>
+  <app-add-editlist *ngIf="addList" [loginuser]="loginUser" (updateUser)="onChange($event)"></app-add-editlist>
 </aside>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,22 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-editlist.component.css']
 })
 export class AddEditlistComponent implements OnInit {
-  userDetails:any
-  taskname:any
-  task:any
+  allUser:any
+  Todoform:FormGroup;
+  @Input() loginuser:any
+  @Output() updateUser = new EventEmitter<any>();
 
-  constructor(private router :Router) { }
+
+  constructor(private router :Router,private fb:FormBuilder) { 
+    this.Todoform = this.fb.group({
+      taskname:['',Validators.required],
+      task:['',Validators.required],
+      status:['Intiated',Validators.required]
+    })
+  }
 
   ngOnInit(): void {
-    if(!localStorage.getItem('loginUser')){
-      this.router.navigateByUrl("")
-    }{
-      this.userDetails=JSON.parse(localStorage.getItem('loginUser') || '')
-    }
   }
+
   submit(){
-    this.userDetails[0].todolist.push({taskname:this.taskname,task:this.task})
-    this.router.navigateByUrl("dashboard")
+      if(this.Todoform.valid){
+        this.loginuser[0].todolist.push(this.Todoform.value)
+        this.updateUser.emit(this.loginuser)
+      }else{
+        alert("Enter values in field")
+      }
+      
   }
 
 }

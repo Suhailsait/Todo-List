@@ -16,9 +16,7 @@ import { ServiceService } from '../services/service.service';
 export class RegisterComponent implements OnInit {
   signupForm: FormGroup = new FormGroup({});
   users: Array<any> = [];
-  temp: Array<any> = [{
-  
-  }];
+  temp: Array<any> = [];
 
   constructor(
     private fb: FormBuilder,
@@ -47,8 +45,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('userList') || '') {
-      localStorage.setItem('userList', JSON.stringify(this.temp));
+    if (!localStorage.getItem('userList') == true) {
+      localStorage.setItem('userList', JSON.stringify(this.users));
+    } else {
+      this.users = JSON.parse(localStorage.getItem('userList') || '');
     }
   }
 
@@ -72,27 +72,27 @@ export class RegisterComponent implements OnInit {
 
   signup() {
     const { username, email, password } = this.signupForm.value;
+
     const todolist: Array<any> = [];
     const data = { username, email, password, todolist };
     if (this.signupForm.valid) {
-      this.users = JSON.parse(localStorage.getItem('userList') || '');
-      if (this.users.length == 1) {
-        this.ds.addUser(data)
-        alert("User added")
+      if (this.users.length == 0) {
+        this.users.push(data)
+        this.ds.addUser(this.users);
+        alert("User Added Successfully")
         this.router.navigateByUrl("");
       } else {
-        const foundValue = this.users.filter(obj=>obj.email===email);
-        console.log(foundValue);
-        
-        if (foundValue[0].email === email) {
-          alert('Existing User Please Login')
+        const foundvalue = this.users.filter((user) => user.email == email)
+        if (foundvalue.length != 0) {
+          alert("Already Existing User")
+          this.router.navigateByUrl("");
         } else {
-          this.ds.addUser(data)
-          alert("User added")
+          this.users.push(data)
+          this.ds.addUser(this.users);
+          alert("User Added Successfully")
           this.router.navigateByUrl("");
         }
       }
-      
     } else {
       alert('Invalid Form');
     }

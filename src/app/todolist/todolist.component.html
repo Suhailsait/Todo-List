@@ -10,7 +10,7 @@
           </span>
           <div class="d-flex flex-column">
             <h5 class="card-title">Total ToDo List</h5>
-            <div class="num">36</div>
+            <div class="num">{{loginuser[0].todolist.length}}</div>
           </div>
         </div>
       </div>
@@ -50,11 +50,24 @@
   <span class="todo-list d-flex flex-column">
     <span class="list-title"> ToDo List </span>
     <span class="list-body">
+      <ul>
+      </ul>
       <ul class="lists d-flex flex-column gap-2">
+        <li>
+          <span></span>
+          <span class="task">task</span>
+          <span class="status">status</span>
+        </li>
         <li
-          class="list-tasks d-flex justify-content-around align-items-center bg-white"
+          class="list-tasks bg-white"
           *ngFor="let item of list"
         >
+        <span class="material-icons">
+          mode_edit
+          </span>
+          <span class="material-icons">
+            delete
+            </span>
           <span class="task d-flex flex-column gap-2">
             <span class="task-title"> {{item.taskname}} </span>
             <span class="task-body">
@@ -64,7 +77,6 @@
           <span class="status">
             <select class="form-select" aria-label="Default select example">
               <option value="intiated" selected>Intiated</option>
-              <option value="onprogress">On progress</option>
               <option value="completed">Completed</option>
             </select>
           </span>

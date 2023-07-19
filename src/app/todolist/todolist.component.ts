@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,17 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./todolist.component.css']
 })
 export class TodolistComponent implements OnInit {
-  userDetails:any
   list:any
+  @Input() loginuser:any
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
-    if(!localStorage.getItem('loginUser')){
-      this.router.navigateByUrl("")
-    }{
-      this.userDetails=JSON.parse(localStorage.getItem('loginUser') || '')
-      this.list = this.userDetails[0].todolist
-    }
+    this.list = this.loginuser[0].todolist
   }
 
 }

@@ -26,7 +26,7 @@
 }
 .list-body{
     overflow: auto;
-    height: 41rem;
+    height: 47rem;
     background-color: #d3e8eb;
     padding: 1rem;
 }
@@ -36,6 +36,8 @@
 
 .list-tasks{
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .task-title{
@@ -45,7 +47,6 @@
 .task-body{
     font-size: 1.2rem;
     font-weight: 500;
-    max-width: 100rem;
 }
 
 .status .form-select {
