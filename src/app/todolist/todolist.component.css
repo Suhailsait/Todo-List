@@ -37,7 +37,15 @@
 .list-tasks{
     padding: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+.tools{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.task{
+    width: 80rem;
 }
 
 .task-title{
@@ -48,7 +56,10 @@
     font-size: 1.2rem;
     font-weight: 500;
 }
-
+.status{
+    display: flex;
+    align-items: center;
+}
 .status .form-select {
     font-size: 1.3rem;
 }

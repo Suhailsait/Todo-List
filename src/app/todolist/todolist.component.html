@@ -53,21 +53,18 @@
       <ul>
       </ul>
       <ul class="lists d-flex flex-column gap-2">
-        <li>
-          <span></span>
-          <span class="task">task</span>
-          <span class="status">status</span>
-        </li>
         <li
           class="list-tasks bg-white"
           *ngFor="let item of list"
         >
-        <span class="material-icons">
-          mode_edit
-          </span>
-          <span class="material-icons">
-            delete
+        <span class="tools">
+          <span class="material-icons edit">
+            mode_edit
             </span>
+            <span class="material-icons delete">
+              delete
+              </span>
+        </span>
           <span class="task d-flex flex-column gap-2">
             <span class="task-title"> {{item.taskname}} </span>
             <span class="task-body">
@@ -81,7 +78,6 @@
             </select>
           </span>
         </li>
-    
       </ul>
     </span>
   </span>
