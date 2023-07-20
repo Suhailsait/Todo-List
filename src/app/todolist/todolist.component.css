@@ -44,6 +44,9 @@
     gap: 2rem;
     align-items: center;
 }
+.edit,.delete{
+    cursor: pointer;
+}
 .task{
     width: 80rem;
 }

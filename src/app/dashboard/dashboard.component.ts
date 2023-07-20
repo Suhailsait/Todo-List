@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   loginUser:any;
   allUser:any;
+  editList:any
+  allList:any
   listView:boolean = true;
   addList :boolean = false;
-
 
   constructor(private router:Router) { }
 
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit {
     }else{
       this.loginUser=JSON.parse(localStorage.getItem('loginUser') || '')
     }
+    this.allList = this.loginUser[0].todolist
   }
 
 
@@ -31,13 +33,14 @@ export class DashboardComponent implements OnInit {
   }
   editview(){
     this.listView = false;
-      this.addList = true;
+    this.addList = true;
   }
 
   onChange(event:any){
     this.loginUser = event;
     this.changetodo(); 
-    localStorage.setItem('loginUser', JSON.stringify(this.loginUser));   
+    localStorage.setItem('loginUser', JSON.stringify(this.loginUser)); 
+    this.editList = null  
   }
 
 
@@ -46,6 +49,22 @@ export class DashboardComponent implements OnInit {
     this.allUser[foundIndex] = this.loginUser[0]
     localStorage.setItem('userList', JSON.stringify(this.allUser));
     this.listview();
+  }
+
+  edit(event?:any){      
+    this.editList = {todo : this.allList[event],index :event} 
+    this.editview()   
+  }
+
+  delete(event:any){
+    this.loginUser = event;
+    this.changetodo(); 
+    localStorage.setItem('loginUser', JSON.stringify(this.loginUser));
+  }
+  statusChange(event:any){
+    this.loginUser = event;
+    this.changetodo(); 
+    localStorage.setItem('loginUser', JSON.stringify(this.loginUser));
   }
 
   logout(){

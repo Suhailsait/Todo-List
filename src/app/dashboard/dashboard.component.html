@@ -56,6 +56,8 @@
 </div>
 
 <aside class="main-body p-3 bg-white">
-  <app-todolist *ngIf="listView" [loginuser]="loginUser"></app-todolist>
-  <app-add-editlist *ngIf="addList" [loginuser]="loginUser" (updateUser)="onChange($event)"></app-add-editlist>
+  <app-todolist *ngIf="listView" [loginuser]="loginUser" (editlist)="edit($event)"
+    (deletelist)="delete($event)" (changeStatus)="statusChange($event)"></app-todolist>
+  <app-add-editlist *ngIf="addList" [loginuser]="loginUser" [editlist]="editList"
+  (updateUser)="onChange($event)"></app-add-editlist>
 </aside>
