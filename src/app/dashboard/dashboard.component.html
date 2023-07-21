@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="javascript:void(0)">
       <span class="logo d-flex align-items-center gap-4">
         <img src="../../assets/Images/todo-logo.png" alt="" />
         <span class="logo-content">TODOS</span>
@@ -57,7 +57,7 @@
 
 <aside class="main-body p-3 bg-white">
   <app-todolist *ngIf="listView" [loginuser]="loginUser" (editlist)="edit($event)"
-    (deletelist)="delete($event)" (changeStatus)="statusChange($event)"></app-todolist>
+    (deletelist)="delete($event)" (changeStatus)="statusChange($event)" (updateUser)="onChange($event)"></app-todolist>
   <app-add-editlist *ngIf="addList" [loginuser]="loginUser" [editlist]="editList"
   (updateUser)="onChange($event)"></app-add-editlist>
 </aside>

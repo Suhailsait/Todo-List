@@ -38,6 +38,16 @@
     padding: 1rem;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+.handle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.drag{
+    font-size: 3rem;
+    cursor: grab;
 }
 .tools{
     display: flex;
@@ -46,6 +56,11 @@
 }
 .edit,.delete{
     cursor: pointer;
+    transition: all 1s;
+}
+.edit:hover,.delete:hover{
+    transform: rotateY(360deg);
+    transition: all 1s;
 }
 .task{
     width: 80rem;

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import {CdkDragDrop, moveItemInArray, CdkDrag, CdkDropList} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-todolist',
@@ -14,6 +15,8 @@ export class TodolistComponent implements OnInit {
   @Output() editlist = new EventEmitter<any>();
   @Output() deletelist = new EventEmitter<any>();
   @Output() changeStatus = new EventEmitter<any>();
+  @Output() updateUser = new EventEmitter<any>;
+
   statusList:any=[
     "Not Intiated",
     "Intiated",
@@ -46,5 +49,11 @@ export class TodolistComponent implements OnInit {
     this.changeStatus.emit(this.loginuser)
     this.status()
   }
+
+  drop(event: CdkDragDrop<unknown>) {    
+    moveItemInArray(this.loginuser[0].todolist, event.previousIndex, event.currentIndex);
+    this.updateUser.emit(this.loginuser)
+  }
+
 
 }

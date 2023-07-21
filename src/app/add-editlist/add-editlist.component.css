@@ -3,16 +3,17 @@
     height: 100%;
 }
 form{
-    width: 40rem;
+    width: 50rem;
     background-color: #d3e8eb7f;
     padding: 2rem;
 }
 .form-label{
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 
 textarea{
     height: 10rem;
+    resize: none;
 }
 button{
     width: 15rem;

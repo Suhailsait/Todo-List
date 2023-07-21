@@ -44,10 +44,13 @@
   <span class="todo-list d-flex flex-column">
     <span class="list-title"> ToDo List </span>
     <span class="list-body">
-      <ul>
-      </ul>
-      <ul class="lists d-flex flex-column gap-2">
-        <li class="list-tasks bg-white" *ngFor="let item of list; let i=index">
+      <ul class="lists d-flex flex-column gap-2" cdkDropList (cdkDropListDropped)="drop($event)">
+        <li class="list-tasks bg-white" *ngFor="let item of list; let i=index" cdkDrag>
+          <div class="handle" cdkDragHandle>
+            <span class="material-icons drag">
+              drag_indicator
+              </span>
+          </div>
           <span class="tools">
             <span class="material-icons edit" (click)="edit(i,item)">
               mode_edit
@@ -64,7 +67,8 @@
           </span>
           <span class="status">
             <select class="form-select" aria-label="Default select example" (change)="statusChange($event,i)">
-              <option [value]="status" [selected]="item.status == status" *ngFor="let status of statusList">{{status}}</option>
+              <option [value]="status" [selected]="item.status == status" *ngFor="let status of statusList">{{status}}
+              </option>
             </select>
           </span>
         </li>

@@ -25,7 +25,6 @@ export class AddEditlistComponent implements OnInit {
   }
 
   ngOnInit(): void {   
-     
     if (this.editlist != null) {
       this.index = this.editlist.index
       this.Todoform.patchValue({
@@ -50,7 +49,7 @@ export class AddEditlistComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    this.Todoform.reset();    
+    this.updateUser.emit(this.loginuser)   
   }
 
 
